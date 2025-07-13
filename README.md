@@ -40,7 +40,7 @@ A modern, responsive employee management system built with **HTML5, CSS3, and Va
 
 ## 🎨 Project Structure
 
-employee-directory/
+employee-directory/<br>
 ├── index.html          # Main HTML file<br>
 ├── styles.css          # All CSS styles<br>
 ├── script.js           # JavaScript functionality<br>
@@ -69,11 +69,31 @@ class EmployeeManager {
 }
 ```
 ## UI Components
-|Component	    |Description
-|Employee Cards	|Displays employee details with action buttons
-|Filter Panel	|Slide-out panel for advanced filtering
-|Add/Edit Modal	|Clean form dialog for employee data
-|Pagination     |Navigate between employee pages
+
+========================================================
+||               COMPONENT BREAKDOWN                  ||
+========================================================
+| Component       | Description                        |
+|-----------------|------------------------------------|
+| Employee Cards  | Displays employee details with     |
+|                 | Edit/Delete action buttons         |
+|-----------------|------------------------------------|
+| Filter Panel    | Slide-out panel with filters for:  |
+|                 | - First Name                       |
+|                 | - Department                       |
+|                 | - Role                             |
+|-----------------|------------------------------------|
+| Add/Edit Modal  | Form for adding new employees or   |
+|                 | editing existing ones with:        |
+|                 | - Input validation                 |
+|                 | - Error messages                   |
+|-----------------|------------------------------------|
+| Pagination      | Navigation controls showing:       |
+|                 | - Previous/Next buttons            |
+|                 | - Page numbers                     |
+|                 | - Items per page selector          |
+========================================================
+
 
 ## 📱 Responsive Design
 Fully responsive across all device sizes:
