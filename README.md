@@ -41,10 +41,10 @@ A modern, responsive employee management system built with **HTML5, CSS3, and Va
 ## 🎨 Project Structure
 
 employee-directory/
-├── index.html          # Main HTML file
-├── styles.css          # All CSS styles
-├── script.js           # JavaScript functionality
-└── README.md           # This documentation
+├── index.html          # Main HTML file<br>
+├── styles.css          # All CSS styles<br>
+├── script.js           # JavaScript functionality<br>
+└── README.md           # This documentation<br>
 
 ## 📝 Code Overview
 

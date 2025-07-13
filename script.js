@@ -1,10 +1,10 @@
 class EmployeeManager {
     constructor() {
-        this.employees = this.loadMockData();
-        this.filteredEmployees = [...this.employees];
-        this.currentPage = 1;
-        this.itemsPerPage = 10;
-        this.currentEditId = null;
+        this.employees = this.loadMockData(); //Loads mock employee data
+        this.filteredEmployees = [...this.employees]; //Creates a copy for filtering (filteredEmployees)
+        this.currentPage = 1; //Sets pagination defaults
+        this.itemsPerPage = 10; //(page 1, 10 items/page)
+        this.currentEditId = null; //Initializes empty filters object
         this.filters = {
             search: '',
             firstName: '',
@@ -40,31 +40,36 @@ class EmployeeManager {
     // Bind event listeners
     bindEvents() {
         // Search functionality
+        /* 
+        - Watches the search input field
+        - Updates filters on every keystroke
+        - Triggers filtering
+        */
         document.getElementById('searchInput').addEventListener('input', (e) => {
             this.filters.search = e.target.value.toLowerCase();
             this.applyFilters();
         });
 
-        // Sort functionality
+        // Sort functionality (Handles dropdown selection for sorting)
         document.getElementById('sortBy').addEventListener('change', (e) => {
             this.sortBy = e.target.value;
             this.applyFiltersFromPanel();
         });
 
-        // Items per page
+        // [PAGINATION] Changes how many items show per page
         document.getElementById('showEntries').addEventListener('change', (e) => {
             this.itemsPerPage = parseInt(e.target.value);
             this.currentPage = 1;
             this.renderEmployees();
         });
 
-        // Form submission
+        // [FORM SUBMISSION] Handles Add/Edit employee forms
         document.getElementById('employeeForm').addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleFormSubmit();
         });
 
-        // Filter inputs - remove real-time filtering
+        // [FILTERS] Stores filter values (applied when user clicks "Apply")
         document.getElementById('filterFirstName').addEventListener('input', (e) => {
             this.filters.firstName = e.target.value.toLowerCase();
         });
@@ -76,9 +81,9 @@ class EmployeeManager {
         document.getElementById('filterRole').addEventListener('change', (e) => {
             this.filters.role = e.target.value;
         });
-    }
+    } // ... (similar for department/role filters)
 
-    // Toggle filter panel
+    // [FILTER PANEL] Toggles the sliding filter panel visibility
     toggleFilter() {
         const panel = document.getElementById('filterPanel');
         const overlay = document.getElementById('filterOverlay');
@@ -92,8 +97,18 @@ class EmployeeManager {
         }
     }
 
-    // Apply filters
+    // [MAIN FILTER LOGIC] Applies all active filters/sorting
     applyFilters() {
+                /* 
+        FILTER STEPS:
+        1. Start with all employees
+        2. Apply search filter (name/email)
+        3. Apply first name filter
+        4. Apply department filter
+        5. Apply role filter
+        6. Apply sorting if specified
+        7. Update UI
+        */
         this.toggleFilter(); // Close filter panel
         
         let filtered = [...this.employees];
@@ -107,7 +122,7 @@ class EmployeeManager {
             );
         }
 
-        // Apply first name filter
+        // Search filter (checks name/email)
         if (this.filters.firstName) {
             filtered = filtered.filter(emp => 
                 emp.firstName.toLowerCase().includes(this.filters.firstName)
@@ -123,6 +138,7 @@ class EmployeeManager {
         if (this.filters.role) {
             filtered = filtered.filter(emp => emp.role === this.filters.role);
         }
+        // ... (other filters)
 
         // Apply sorting
         if (this.sortBy) {
@@ -152,10 +168,17 @@ class EmployeeManager {
 
     // Render employees
     renderEmployees() {
+        /* 
+        PAGINATION MATH:
+        - Calculate start/end indexes for current page
+        - Slice the employee array accordingly
+        - Generate HTML cards for each employee
+        */
         const start = (this.currentPage - 1) * this.itemsPerPage;
         const end = start + this.itemsPerPage;
         const pageEmployees = this.filteredEmployees.slice(start, end);
 
+        // Generate employee cards or show "no results" message
         const grid = document.getElementById('employeeGrid');
         
         if (pageEmployees.length === 0) {
@@ -291,6 +314,12 @@ class EmployeeManager {
 
     // Validate form
     validateForm() {
+                /* 
+        VALIDATION CHECKS:
+        1. All required fields filled
+        2. Valid email format
+        3. No duplicate emails (except when editing)
+        */
         let isValid = true;
         const fields = ['firstName', 'lastName', 'email', 'department', 'role'];
 
@@ -371,4 +400,5 @@ class EmployeeManager {
 }
 
 // Initialize the EmployeeManager
+// Start the application
 const employeeManager = new EmployeeManager();
