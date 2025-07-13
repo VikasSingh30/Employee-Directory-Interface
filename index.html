@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Directory</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <h1>Employee Directory</h1>
+            <div class="header-controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search by name or email">
+                </div>
+                <button class="btn btn-secondary" onclick="employeeManager.toggleFilter()">Filter</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Controls -->
+        <div class="controls">
+            <div class="left-controls">
+                <div>
+                    <label for="sortBy">Sort:</label>
+                    <select id="sortBy">
+                        <option value="">--Select--</option>
+                        <option value="firstName">First Name</option>
+                        <option value="department">Department</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="showEntries">Show:</label>
+                    <select id="showEntries">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+            </div>
+            <div class="right-controls">
+                <button class="btn btn-primary" onclick="employeeManager.openAddModal()">Add Employee</button>
+            </div>
+        </div>
+
+        <!-- Employee Grid -->
+        <div id="employeeGrid" class="employee-grid">
+            <!-- Employees will be populated here -->
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="pagination">
+            <!-- Pagination will be populated here -->
+        </div>
+    </main>
+
+    <!-- Filter Panel -->
+    <div class="overlay" id="filterOverlay" onclick="employeeManager.toggleFilter()"></div>
+    <div class="filter-panel" id="filterPanel">
+        <div class="filter-header">
+            Filter Employees
+        </div>
+        <div class="filter-content">
+            <div class="filter-group">
+                <label for="filterFirstName">First Name:</label>
+                <input type="text" id="filterFirstName" placeholder="Enter first name">
+            </div>
+            <div class="filter-group">
+                <label for="filterDepartment">Department:</label>
+                <select id="filterDepartment">
+                    <option value="">All Departments</option>
+                    <option value="HR">HR</option>
+                    <option value="IT">IT</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Sales">Sales</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filterRole">Role:</label>
+                <select id="filterRole">
+                    <option value="">All Roles</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Developer">Developer</option>
+                    <option value="Analyst">Analyst</option>
+                    <option value="Designer">Designer</option>
+                    <option value="Coordinator">Coordinator</option>
+                </select>
+            </div>
+            <div class="filter-actions">
+                <button class="btn btn-primary" onclick="employeeManager.applyFiltersFromPanel()">Apply</button>
+                <button class="btn btn-secondary" onclick="employeeManager.resetFilters()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Employee Modal -->
+    <div id="employeeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="modalTitle">Add Employee</span>
+            </div>
+            <div class="modal-body">
+                <form id="employeeForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                            <div class="error" id="firstNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                            <div class="error" id="lastNameError"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error" id="emailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select id="department" name="department" required>
+                                <option value="">Select Department</option>
+                                <option value="HR">HR</option>
+                                <option value="IT">IT</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Sales">Sales</option>
+                            </select>
+                            <div class="error" id="departmentError"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select id="role" name="role" required>
+                            <option value="">Select Role</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Developer">Developer</option>
+                            <option value="Analyst">Analyst</option>
+                            <option value="Designer">Designer</option>
+                            <option value="Coordinator">Coordinator</option>
+                        </select>
+                        <div class="error" id="roleError"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="employeeManager.closeModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
