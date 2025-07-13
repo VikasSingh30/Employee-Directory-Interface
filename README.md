@@ -1,6 +1,6 @@
 # 📂 Employee Directory Web App
 
-[![Employee Directory](https://employee-directory-interface-ten.vercel.app/)]
+[![Live Demo](https://img.shields.io/badge/Employee_Directory-Live_🚀-blueviolet?style=for-the-badge&logo=vercel&logoColor=white)](https://employee-directory-interface-ten.vercel.app/)
 
 A modern, responsive employee management system built with **HTML5, CSS3, and Vanilla JavaScript**. Features CRUD operations, filtering, sorting, and pagination.
 
