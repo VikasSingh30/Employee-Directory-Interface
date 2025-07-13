@@ -1,6 +1,6 @@
 # 📂 Employee Directory Web App
 
-[![Employee Directory]()]
+[![Employee Directory](https://employee-directory-interface-ten.vercel.app/)]
 
 A modern, responsive employee management system built with **HTML5, CSS3, and Vanilla JavaScript**. Features CRUD operations, filtering, sorting, and pagination.
 
@@ -70,9 +70,7 @@ class EmployeeManager {
 ```
 ## UI Components
 
-========================================================
-||               COMPONENT BREAKDOWN                  ||
-========================================================
+||-----------------COMPONENT BREAKDOWN----------------||
 | Component       | Description                        |
 |-----------------|------------------------------------|
 | Employee Cards  | Displays employee details with     |
@@ -92,7 +90,7 @@ class EmployeeManager {
 |                 | - Previous/Next buttons            |
 |                 | - Page numbers                     |
 |                 | - Items per page selector          |
-========================================================
+|-----------------|------------------------------------|
 
 
 ## 📱 Responsive Design
